@@ -1,0 +1,96 @@
+<html>
+
+<head>
+    <title>Stopwatch</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; 
+            height: 100vh;
+            background-image: url(https://static.vecteezy.com/system/resources/previews/009/675/793/original/stopwatch-doodle-illustration-sports-timer-clock-cartoon-icon-vector.jpg);
+            background-repeat: no-repeat;
+            background-position: center; 
+            background-size: 1100px 1100px; 
+            width: 100%;
+        }
+        #display {
+            display: block;
+            font-size: 45px;
+            margin-bottom: 20px;
+            margin-left: 2px;
+            margin-top: 130px;
+            
+        }
+        .buttons{
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+        }
+        button {
+            font-size: 20px;
+            margin-top: 160px;
+            padding: 10px;
+            font-family: monospace;
+            background-color: black;
+            color: white;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div id="display">00:00:00</div>
+
+        <div class="buttons">
+            <button onclick="start()">Start</button>
+            <button onclick="pause()">Pause</button>
+            <button onclick="reset()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+
+        let Timer = null;
+        let seconds = 0;
+
+        function updateDisplay() {
+            let hrs = Math.floor(seconds / 3600);
+            let mins = Math.floor((seconds % 3600) / 60);
+            let sec = seconds % 60;
+
+            document.getElementById('display').textContent =
+                String(hrs).padStart(2, '0') + ':' +
+                String(mins).padStart(2, '0') + ':' +
+                String(sec).padStart(2, '0');
+
+        }
+
+        function start() {
+            if (Timer !== null) return;
+
+            Timer = setInterval(() => {
+                seconds++
+                updateDisplay()
+            }, 1000)
+        }
+
+        function pause() {
+            clearInterval(Timer);
+            Timer = null;
+        }
+
+        function reset() {
+            pause();
+            seconds = 0;
+            updateDisplay();
+        }
+
+    </script>
+</body>
+
+</html>
