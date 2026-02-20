@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fahrenheit to Celsius</title>
+    <style>
+        body{
+            text-align: center;
+            font-size: 24px;
+            font-family: cursive;
+            background-color: rgb(205, 204, 204);
+        }
+        .box{
+            width: 300px;
+            height: 400px;
+            display: inline-block;
+            background-color: white;
+            margin-top: 100px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px rgba(0,0,0,0.7);
+
+        }
+        h2{
+            margin-bottom: 30px;
+        }
+        input{
+            margin-top: 17px;
+            padding: 20px;
+            width: 80%;
+            border: none;
+            background-color:  rgb(221, 220, 220);
+            border-radius: 10px;
+            font-size: 16px;
+        }
+        .btn{
+            margin-top: 40px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            border-color: rgb(208, 207, 207);
+        }
+        .btn:hover{
+            background:  rgb(232, 230, 230);
+        }
+         .btn1{
+            margin-top: 40px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            border-color: rgb(208, 207, 207);
+        }
+        .btn1:hover{
+            background:  rgb(224, 16, 16);
+            border-color: rgb(248, 14, 14);
+        }
+        h4{
+            font-size: 18px;
+            color: rgb(0, 179, 255);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h2>Fahrenheit to Celsius</h2>
+        <input type="number" id="Fahrenheit" placeholder=' Fahrenheit'>
+        <button class="btn" onclick="myfunction()">Convert</button>
+        <button class="btn1" onclick="resetfield()">Clear</button>
+        <h4 id="result"></h4>
+    </div>
+    <script>
+        function myfunction(){
+            let val=document.getElementById('Fahrenheit').value;
+            if(val === ''){
+                document.getElementById('result').innerText="Please enter the value"
+                return;
+            }
+            let F=Number(val);
+            let c= (F - 32) * 5/9
+            document.getElementById('result').innerText=`${F}°F = ${c}°C`;
+        }
+        function resetfield(){
+           document.getElementById('Fahrenheit').value = "";
+           document.getElementById('result').innerText = ""
+        }
+    </script>
+    
+</body>
+</html>
